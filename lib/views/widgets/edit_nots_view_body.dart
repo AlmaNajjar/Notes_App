@@ -4,7 +4,10 @@ import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/widgets/custm_text_field.dart';
 
+import '../../cubits/add_note_cubit.dart';
+import 'color_list_view.dart';
 import 'custom_appbar.dart';
+import 'edit_note_color_list_view.dart';
 
 class editNotsViewBody extends StatefulWidget {
   const editNotsViewBody({super.key, required this.note});
@@ -48,7 +51,9 @@ BlocProvider.of<NotesCubit>(context).fetchAllNotes();
               onChanged: (value){
                 content=value;
               },
-              hint:widget.note.subtitle, maxLine: 5)
+              hint:widget.note.subtitle, maxLine: 5),
+         const  SizedBox(height: 24,),
+          EditNoteColorListView(note: widget.note,),
         ]));
   }
 }
